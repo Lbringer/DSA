@@ -25,6 +25,9 @@ public:
     void displayList() const;
     int countNodes() const;
     int find(int data) const;
+    void insertAtBeg(int data);
+    void insertAtEnd(int data);
+    void createList();
 };
 
 SingleLinkedList::SingleLinkedList()
@@ -81,17 +84,65 @@ int SingleLinkedList::find(int data) const
     }
     return -1;
 }
+void SingleLinkedList::insertAtBeg(int data)
+{
+    Node *temp = new Node(data);
+    temp->link = start;
+    start = temp;
+}
+
+void SingleLinkedList::insertAtEnd(int data)
+{
+    if (isEmpty())
+    {
+        insertAtBeg(data);
+        return;
+    }
+    Node *temp = new Node(data);
+    Node *p = start;
+    while (p->link != NULL)
+    {
+        p = p->link;
+    }
+    p->link = temp;
+}
+
+void SingleLinkedList::createList()
+{
+    int n, data;
+    cout << "How many elements do you want to insert?\n";
+    cin >> n;
+
+    if (n <= 0)
+    {
+        return;
+    }
+    cout << "Enter the first element\n";
+    cin >> data;
+    insertAtBeg(data);
+
+    for (int i = 1; i < n; i++)
+    {
+        cout << "Enter next element\n";
+        cin >> data;
+        insertAtEnd(data);
+    }
+}
 
 int main()
 {
     SingleLinkedList list;
+    list.createList();
     int choice, el, pos;
     while (1)
     {
-        cout << "Enter you choice:\n(press -1 to quit)\n";
+        cout << "Enter you choice:\n";
         cout << "1.Display the list\n";
         cout << "2.Count the number of elements\n";
         cout << "3.Find the element\n";
+        cout << "4.Insert element at beg\n";
+        cout << "5.Insert element at end\n";
+        cout << "-1.To quit\n";
         cin >> choice;
         if (choice == -1)
         {
@@ -120,9 +171,29 @@ int main()
             }
             else
             {
-                cout << "El found at" << pos << "\n";
+                cout << "El found at " << pos << "\n";
             }
         }
+        break;
+        case 4:
+        {
+            cout << "Enter element to be inserted at starting:";
+            cin >> el;
+            list.insertAtBeg(el);
+        }
+        break;
+        case 5:
+        {
+            cout << "Enter element to be inserted at ending:";
+            cin >> el;
+            list.insertAtEnd(el);
+        }
+        break;
+        default:
+        {
+            cout << "Enter valid input\n";
+        }
+        break;
         }
     }
     cout << "Exiting \n";
