@@ -1,4 +1,4 @@
-import java.util.function.Function;
+import java.util.*;
 
 // Verify Constraints: Only positive , exactly one solution , solution may not
 // exist
@@ -14,7 +14,7 @@ import java.util.function.Function;
 // Figure out a solution without code:
 
 public class twosum {
-    static int[] ts(int[] arr, int target) {
+    static int[] tsbrute(int[] arr, int target) {
         for (int i = 0; i < arr.length; i++) {
             int val = target - arr[i];
             for (int j = i + 1; j < arr.length; j++) {
@@ -27,10 +27,28 @@ public class twosum {
         return null;
     }
 
+    static int[] tsop(int[] arr, int target) {
+
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+        for (int i = 0; i < arr.length; i++) {
+
+            if (map.containsKey(arr[i])) {
+                int index = map.get(arr[i]);
+                int res[] = { index, i };
+                return res;
+            }
+
+            int val = target - arr[i];
+            map.put(val, i);
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         int[] arr = { 1, 3, 7, 9, 2 };
-        int target = 6;
-        int[] res = ts(arr, target);
+        int target = 11;
+        int[] res = tsop(arr, target);
         if (res != null) {
             for (int i = 0; i < res.length; i++) {
                 System.out.print(res[i]);
@@ -41,3 +59,9 @@ public class twosum {
         }
     }
 }
+
+// Space and time complexity: (brute)
+// O(1) and O(n^2)
+
+// Space and time complexity:(op)
+// O(n) and O(n)
