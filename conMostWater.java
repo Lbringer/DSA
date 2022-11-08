@@ -18,11 +18,35 @@ public class conMostWater {
         return maxArea;
     }
 
+    static int op(int[] arr) {
+        int maxArea = 0;
+        if (arr.length == 0) {
+            return 0;
+        }
+        int a = 0;
+        int b = arr.length - 1;
+        while (a < b) {
+            int area = Math.min(arr[a], arr[b]) * (b - a);
+            if (area > maxArea) {
+                maxArea = area;
+            }
+            if (arr[a] <= arr[b]) {
+                a = a + 1;
+            } else {
+                b = b - 1;
+            }
+        }
+        return maxArea;
+    }
+
     public static void main(String[] args) {
-        int[] arr = { 6, 9, 3, 4, 5, 8 };
+        int[] arr = { 4, 8, 1, 2, 3, 9 };
         System.out.println(brute(arr));
+        System.out.println(op(arr));
     }
 }
 
 // brute space and time:
 // O(1) and O(n^2)
+// op space and time:
+// O(1) and O(n)
