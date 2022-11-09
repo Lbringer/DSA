@@ -18,6 +18,7 @@ public class conMostWater {
         return maxArea;
     }
 
+    // Two pointer technique
     static int op(int[] arr) {
         int maxArea = 0;
         if (arr.length == 0) {
