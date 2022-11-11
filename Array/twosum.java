@@ -1,3 +1,5 @@
+package Array;
+
 import java.util.*;
 
 // Verify Constraints: Only positive , exactly one solution , solution may not

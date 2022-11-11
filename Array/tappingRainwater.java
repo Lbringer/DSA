@@ -1,3 +1,5 @@
+package Array;
+
 public class tappingRainwater {
     // Test case:[0,1,0,2,1,0,3,1,0,1,2] => 8
     // []=>0

@@ -1,3 +1,4 @@
+package Array;
 
 //Best case testcase:[7,1,2,3,9] => 7*4 = 28
 //[] => 0
