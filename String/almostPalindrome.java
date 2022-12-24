@@ -1,8 +1,5 @@
 package String;
 
-import java.util.HashMap;
-import java.util.HashSet;
-
 public class almostPalindrome {
 
     public static String pre(String s) {
