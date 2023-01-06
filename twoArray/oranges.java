@@ -1,4 +1,4 @@
-package twoDArray;
+package twoArray;
 
 import java.util.ArrayList;
 

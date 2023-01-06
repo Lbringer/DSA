@@ -1,4 +1,4 @@
-package twoDArray;
+package twoArray;
 
 public class landWater {
     class Solution {
