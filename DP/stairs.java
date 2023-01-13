@@ -3,7 +3,24 @@ package DP;
 import java.util.HashMap;
 
 public class stairs {
+    // Bottom Up
     class Solution {
+        public int minCostClimbingStairs(int[] cost) {
+            int[] minCost = new int[cost.length];
+            for (int i = 0; i < minCost.length; i++) {
+                if (i == 0 || i == 1) {
+                    minCost[i] = cost[i];
+                } else {
+                    minCost[i] = cost[i] + Math.min(minCost[i - 1], minCost[i - 2]);
+                }
+            }
+            int res = cost.length;
+            return Math.min(minCost[res - 1], minCost[res - 2]);
+        }
+    }
+
+    // Top Down
+    class Solution1 {
         public int minCostClimbingStairs(int[] cost) {
             HashMap<Integer, Integer> sol = new HashMap<>();
             sol.put(0, cost[0]);
